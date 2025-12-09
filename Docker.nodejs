@@ -15,7 +15,7 @@ LABEL author=devopsteam
 LABEL project=NODEJS
 
 COPY --from=build /nodeapp/build /usr/share/nginx/html
-USER Nandu
+
 
 WORKDIR /nodeapp
 EXPOSE 80
