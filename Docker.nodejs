@@ -1,4 +1,8 @@
 FROM node:trixie-slim AS build
+
+RUN useradd -m Nandu
+USER Nandu
+
 ADD . /nodeapp
 WORKDIR /nodeapp
 RUN npm install && \
