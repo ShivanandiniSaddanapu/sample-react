@@ -1,0 +1,16 @@
+FROM node:trixie-slim AS build
+ADD . /nodeapp
+WORKDIR /nodeapp
+RUN npm install && \
+    npm build run
+
+FROM nginx:1.29.3 AS runtime
+
+
+LABEL author=devopsteam
+LABEL project=NODEJS
+
+COPY --from=build /nodeapp/build /usr/share/nginx/html
+
+WORKDIR /nodeapp
+EXPOSE 80
